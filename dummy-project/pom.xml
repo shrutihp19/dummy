@@ -11,6 +11,8 @@
 	<name>dummy-project</name>
 
     <properties>
+         <sonar.sources>src/main/mule</sonar.sources>
+<sonar.tests/>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -37,6 +39,11 @@
 	</build>
 
 	<dependencies>
+	    <dependency>
+             <groupId>org.sonarsource.scanner.maven</groupId>
+             <artifactId>sonar-maven-plugin</artifactId>
+             <version>3.6.1.1688</version>
+        </dependency>
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-http-connector</artifactId>
