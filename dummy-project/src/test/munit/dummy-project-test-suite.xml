@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummy-project-test-suite.xml" />
+	<munit:test name="dummy-project-test-suite-dummy-projectFlowTest" doc:id="2a4520bd-2752-43d7-9ddc-fa8871d5ba29" description="Test">
+		<munit:execution >
+			<munit:set-null-payload doc:name="Set null payload" doc:id="357a50ed-fba1-44e2-bdf3-c6485d24ba07" />
+			<flow-ref doc:name="Flow-ref to dummy-projectFlow" doc:id="252fd30f-e70d-4559-8e1c-fe714a7a4071" name="dummy-projectFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="2dcddadb-b576-4640-a1bd-af9f73ed44d1" actual="#[payload]" expected='#["Hi dummy"]' message="payload not as expected"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummy-project-test-suite-dummy-projectFlowTest1" doc:id="1698db34-ed2c-42e6-8e21-29a4e2ab1dd6" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummy-projectFlow" doc:id="1f547af0-aa72-48dc-bfe2-f566c36d7605" name="dummy-projectFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="4de3f946-f342-4dbc-9283-dbd6244424be" is="#[MunitTools::startsWith('Hi')]" message="doesn't starts with Hi" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummy-project-test-suite-dummy-projectFlowTest2" doc:id="6435e7f6-8401-42b7-bf0b-4703ca1d717f" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummy-projectFlow" doc:id="2774a602-340f-4b0b-a60b-6d8fcf9a0770" name="dummy-projectFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="969495ca-5f39-489b-a86e-c5f58d74ac46" is="#[MunitTools::endsWith('dummy')]" message="doesn't ends with dummy" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
